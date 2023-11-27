@@ -12,7 +12,7 @@ export const Footer = () => {
           <div className="">
             <a href="/" className="flex items-center mb-4">
               <Image
-                src="/images/img-bg-logo.png"
+                src="/logo.png"
                 width={40}
                 height={40}
                 alt="deliLogo"

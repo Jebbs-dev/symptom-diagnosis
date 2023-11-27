@@ -4,7 +4,8 @@ import { InfoSection } from "@/modules/landing/infosection/infosection";
 import { History } from "@/modules/landing/history/diagnosis-history";
 import Image from "next/image";
 import { Signin } from "@/components/forms/signin/signin";
-import { Chat } from "@/modules/chat/chatbox";
+import { HistoryModal } from "@/modules/special/history-modal";
+
 
 export default function Home() {
   return (
@@ -13,7 +14,6 @@ export default function Home() {
       <InfoSection />
       <Features />
       <History />
-      <Chat />
     </main>
   );
 }

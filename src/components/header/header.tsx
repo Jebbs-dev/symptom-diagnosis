@@ -1,11 +1,12 @@
 "use client";
 
-import { Dispatch, Fragment, SetStateAction, useState } from "react";
+import { Fragment, SetStateAction, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { navigation } from "./data/nav-links";
 import Link from "next/link";
 import { Signin } from "../forms/signin/signin";
+import { Signup } from "../forms/signup/signup";
 
 interface IAllTabs {
   name: string;
@@ -26,15 +27,26 @@ function classNames(...classes: string[]) {
 
 export const Navbar = () => {
   const [showSignin, setShowSignin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
   const [tabRoute, setTabRoute] = useState("/");
 
   const toggleModal = () => {
-    setShowSignin((prevstate) => !prevstate);
+    setShowSignin(!showSignin);
+    setShowSignup(false);
+    !open;
   };
 
-  const toggleRoute = (href: SetStateAction<string>) => {
-    setTabRoute(href);
+  const createAccount = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    setShowSignup(true);
+    setShowSignin(false);
   };
+
+  const toggleRoute = (item: SetStateAction<string>) => {
+    setTabRoute(item);
+  };
+
+  console.log(tabRoute);
 
   return (
     <>
@@ -60,7 +72,7 @@ export const Navbar = () => {
                     <Link href="/">
                       <img
                         className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                        src="logo.png"
                         alt="Your Company"
                       />
                     </Link>
@@ -71,10 +83,9 @@ export const Navbar = () => {
                         <Link
                           key={item.name}
                           href={item.href}
-                          // onClick={(e) => {
-                          //   e.preventDefault();
-                          //   toggleRoute(item.href);
-                          // }}
+                          onClick={() => {
+                            toggleRoute(item.href);
+                          }}
                           className={classNames(
                             item.href === tabRoute
                               ? "bg-gray-900 text-white"
@@ -93,12 +104,11 @@ export const Navbar = () => {
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   <button
+                    onClick={toggleModal}
                     type="button"
-                    className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                    className="hidden sm:block rounded-md bg-violet-600 px-3 sm:px-3.5 py-1.5 sm:py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-violet-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-600"
                   >
-                    <span className="absolute -inset-1.5" />
-                    <span className="sr-only">View notifications</span>
-                    <BellIcon className="h-6 w-6" aria-hidden="true" />
+                    Get Started
                   </button>
 
                   {/* Profile dropdown */}
@@ -152,15 +162,15 @@ export const Navbar = () => {
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <a
-                              onClick={toggleModal}
+                            <Link
+                              href="#"
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm text-gray-700"
                               )}
                             >
-                              Sign in
-                            </a>
+                              Sign out
+                            </Link>
                           )}
                         </Menu.Item>
                       </Menu.Items>
@@ -188,12 +198,22 @@ export const Navbar = () => {
                     {item.name}
                   </Disclosure.Button>
                 ))}
+                <a
+                  onClick={toggleModal}
+                  className="text-gray-300 bg-violet-600 hover:bg-violet-700 hover:text-white
+                  block rounded-md px-3 py-2 text-base font-medium"
+                >
+                  Get Started
+                </a>
               </div>
             </Disclosure.Panel>
           </>
         )}
       </Disclosure>
-      {showSignin ? <Signin showSignin={showSignin} /> : null}
+      {showSignup ? <Signup showSignup={showSignup} /> : null}
+      {showSignin ? (
+        <Signin showSignin={showSignin} createAccount={createAccount} />
+      ) : null}
     </>
   );
 };

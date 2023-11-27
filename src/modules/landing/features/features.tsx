@@ -14,7 +14,7 @@ export const Features = () => {
       ></div>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl md:text-center">
-          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+          <h2 className="text-4xl font-bold tracking-tight text-white text-center sm:text-6xl">
             Features
           </h2>
           <div className="grid md:grid-cols-2 mx-auto justify-center">

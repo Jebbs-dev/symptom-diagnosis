@@ -5,8 +5,7 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { navigation } from "./data/nav-links";
 import Link from "next/link";
-import { Signin } from "../forms/signin/signin";
-import { Signup } from "../forms/signup/signup";
+
 
 interface IAllTabs {
   name: string;
@@ -26,21 +25,7 @@ function classNames(...classes: string[]) {
 }
 
 export const Navbar = () => {
-  const [showSignin, setShowSignin] = useState(false);
-  const [showSignup, setShowSignup] = useState(false);
   const [tabRoute, setTabRoute] = useState("/");
-
-  const toggleModal = () => {
-    setShowSignin(!showSignin);
-    setShowSignup(false);
-    !open;
-  };
-
-  const createAccount = (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-    setShowSignup(true);
-    setShowSignin(false);
-  };
 
   const toggleRoute = (item: SetStateAction<string>) => {
     setTabRoute(item);
@@ -103,13 +88,14 @@ export const Navbar = () => {
                   </div>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  <button
-                    onClick={toggleModal}
-                    type="button"
-                    className="hidden sm:block rounded-md bg-violet-600 px-3 sm:px-3.5 py-1.5 sm:py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-violet-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-600"
-                  >
-                    Get Started
-                  </button>
+                  <Link href="/signin">
+                    <button
+                      type="button"
+                      className="hidden sm:block rounded-md bg-violet-600 px-3 sm:px-3.5 py-1.5 sm:py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-violet-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-600"
+                    >
+                      Get Started
+                    </button>
+                  </Link>
 
                   {/* Profile dropdown */}
                   <Menu as="div" className="relative ml-3">
@@ -198,22 +184,18 @@ export const Navbar = () => {
                     {item.name}
                   </Disclosure.Button>
                 ))}
-                <a
-                  onClick={toggleModal}
+                <Link
+                  href="/signin"
                   className="text-gray-300 bg-violet-600 hover:bg-violet-700 hover:text-white
                   block rounded-md px-3 py-2 text-base font-medium"
                 >
                   Get Started
-                </a>
+                </Link>
               </div>
             </Disclosure.Panel>
           </>
         )}
       </Disclosure>
-      {showSignup ? <Signup showSignup={showSignup} /> : null}
-      {showSignin ? (
-        <Signin showSignin={showSignin} createAccount={createAccount} />
-      ) : null}
     </>
   );
 };

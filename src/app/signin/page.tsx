@@ -9,7 +9,7 @@ interface IFormInput {
   password: string;
 }
 
-const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
 const SignIn = () => {
   const {
@@ -56,7 +56,7 @@ const SignIn = () => {
                   required: "Email is required",
                   validate: {
                     matchPattern: (v) =>
-                      regex.test(v) || "Please input a valid email",
+                      emailRegex.test(v) || "Please input a valid email",
                     maxLength: (v) =>
                       v.length <= 50 ||
                       "Email cannot be more than 50 characters",

@@ -5,7 +5,7 @@ export const HeroSection = () => {
     <div className="relative isolate px-6 pt-14 lg:px-8" id="#">
       <img
         src="https://www.westinjurylawyers.com/wp-content/uploads/2017/06/Doctor-giving-femal-patient-second-opinion-6.9.17-4.jpg"
-        alt=""
+        alt="doctor and patient"
         className="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center bg-gray-900 brightness-[30%]"
       />
       <div className="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">

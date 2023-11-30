@@ -13,19 +13,17 @@ export const Footer = () => {
             <a href="/" className="flex items-center mb-4">
               <Image
                 src="/logo.png"
-                width={40}
-                height={40}
+                width={35}
+                height={35}
                 alt="deliLogo"
                 className="mr-2"
               />
-              <span className="font-semibold text-lg">
-                Sanita
-              </span>
+              <span className="font-semibold text-lg">Sanita</span>
             </a>
             <p className="opacity-40">
-              Indulge in a culinary journey of exquisite flavors at Jebbs Deli,
-              where passion meets the plate. Discover a symphony of taste in
-              every bite.
+              Revolutionize diagnosis with AI-driven symptom analysis to
+              delivers precise assessments, leveraging advanced algorithms for
+              accurate insights.
             </p>
             <div className="flex flex-row mt-5">
               <div className="flex rounded-full h-8 w-8 items-center justify-around bg-violet-600 text-white mr-3">
@@ -41,29 +39,25 @@ export const Footer = () => {
           </div>
 
           <div className="">
-            <h3 className="text-[18px] font-semibold mb-7">
-              Quick Links
-            </h3>
+            <h3 className="text-[18px] font-semibold mb-7">Quick Links</h3>
             <div className="flex flex-col justify-around opacity-40 space-y-2">
               <a href="/">
-                <span>Popular dishes</span>
+                <span>Home</span>
               </a>
-              <a href="/">
-                <span>Menu</span>
+              <a href="#explore">
+                <span>Explore</span>
               </a>
-              <a href="/">
-                <span>Reservations</span>
+              <a href="#features">
+                <span>Features</span>
               </a>
-              <a href="/">
-                <span>Review</span>
+              <a href="#diagnosis">
+                <span>Diagnosis</span>
               </a>
             </div>
           </div>
 
           <div className="">
-            <h3 className="text-[18px] font-semibold mb-7">
-              About Us
-            </h3>
+            <h3 className="text-[18px] font-semibold mb-7">About Us</h3>
             <div className="flex flex-col justify-around opacity-40  space-y-2">
               <a href="/" className="">
                 <span>Terms and condtions</span>
@@ -81,9 +75,7 @@ export const Footer = () => {
           </div>
 
           <div className="">
-            <h3 className="text-[18px] font-semibold mb-7">
-              Get in Touch
-            </h3>
+            <h3 className="text-[18px] font-semibold mb-7">Get in Touch</h3>
 
             {foot_wigs.map((foot) => {
               return (
